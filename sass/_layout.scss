@@ -1,0 +1,283 @@
+
+/* #Joel's Floating Pancake Grid
+================================================== */
+    /* Base Grid */
+
+
+/* Pattern for HTML
+
+Create the rows in your document
+
+<header>
+...
+</header>
+<nav>
+...
+</nav>
+
+etc.
+
+Between the rows, you will need a continer <div class="container"> ... </div> 
+This needs to be in each row, this is what is centered in the site.
+
+The default wordpress navigation system will be converted. Try and match the number
+of columns and main nav items to make it look its best.
+
+If you need columns, add "onecol" "twocol" etc. to the container div
+e.g. <div class="container fivecol"> ... </div> In the div, add in the columns you need
+
+<div class="col">...</div>
+<div class="col">...</div>
+<div class="col">...</div>
+<div class="col">...</div>
+<div class="col">...</div>
+
+one for each column. If you want them to span a couple or a few cols, add spantwo, spanthree etc. to the
+col div.
+
+e.g.  <div class="col spanthree">...</div>
+*/
+
+/*
+ _______  _______  _______  _______ 
+(  ____ )(  ___  )(  ____ )(  ___  )
+| (    )|| (   ) || (    )|| (   ) |
+| (____)|| (___) || (____)|| (___) |
+|  _____)|  ___  ||  _____)|  ___  |
+| (      | (   ) || (      | (   ) |
+| )      | )   ( || )      | )   ( |
+|/       |/     \||/       |/     \|
+ 
+*/
+ 
+$margin_width:$master_margin_width;
+$fullcontainer_width:$papawidth;
+
+    .container                      { width: $fullcontainer_width; margin: 0 auto; padding: 0; overflow: hidden;}
+    .container .col                 { float: left; margin: 0 0 0 $margin_width; }
+    .container .nomargin            { margin:0;}
+    .container .rowholder           { margin:0;}
+    .container .rowholder .col:first-child           { margin:0 !important;}
+
+@for $i from 1 through $number_of_columns {
+    $colwidth: ($fullcontainer_width/$i)-($margin_width*(($i+1)/$i));
+    .col#{$i} { 
+        .col {width: $colwidth;
+            @for $i from 2 through $i {
+                &.span#{$i} {
+                    width: ($colwidth*$i)+($margin_width*($i - 1));
+                }
+            }
+        }
+    }
+}
+.wp-caption {
+    width:  (($fullcontainer_width/$number_of_columns)-($margin_width)*1.5) !important;
+}
+
+/* Incedentals
+================================================== */
+/* 
+For full bleed navigation. Place the nav outside of a col
+For cropped nav, place inside a col.
+
+If the nav needs to be in a spot that uses 4 of 5 columns you would build it out like this:
+
+
+<div class="fivecol">
+    <div class="col">
+        Logo or whatever
+    </div>
+    <nav class="menubar main-nav" id="main-nav">
+      <div class="container  navarea">
+        <?php wp_nav_menu( array( 'theme_location' => 'primary-menu' ) ); ?>
+      </div>
+    </nav>
+</div>
+
+This would butt the nav right up to the edge of the content in the previous column 
+For an example: look at bmp.saanich.ca
+
+<div class="fivecol">
+    <div class="col">
+        Logo or whatever
+    </div>
+    <div class="col spanfour">
+        <nav class="menubar main-nav" id="main-nav">
+          <div class="container navarea cropped">
+            <?php wp_nav_menu( array( 'theme_location' => 'primary-menu' ) ); ?>
+          </div>
+        </nav>
+    </div>
+</div>
+
+This example wouldplace the navigation inside a column, and give it the margin width on either side.
+*/
+
+
+
+$usablecolwidth: 
+$fullcontainer_width - (($margin_width * $number_of_columns) + $margin_width) 
+;
+
+$acolumnwidth:
+$usablecolwidth/$number_of_columns
+;
+
+$navcoltotalfull:
+($acolumnwidth * $width_of_nav_in_columns) + ($margin_width * ($width_of_nav_in_columns + 1))
+;
+$navcoltotalcropped:
+($acolumnwidth * $width_of_nav_in_columns) + ($margin_width * ($width_of_nav_in_columns - 1))
+;
+
+$menuitem_width_full:
+($navcoltotalfull - ($margin_width * ($number_of_nav_items - 1))) / $number_of_nav_items 
+;
+
+$menuitem_width_cropped:
+($navcoltotalcropped - ($margin_width * ($number_of_nav_items - 1))) / $number_of_nav_items 
+;
+.navarea {
+    ul.menu {
+        margin:0; 
+        width:$navcoltotalfull;
+        li {margin:0 $margin_width 0 0; width:$menuitem_width_full}
+        li:last-child{margin:0}
+        ul.sub-menu{ width:$menuitem_width_full * 2 + $margin_width;}
+    }
+}
+.navarea.cropped{
+    ul.menu {
+        margin:0; 
+        width:$navcoltotalcropped;
+        li {margin:0 $margin_width 0 0; width:$menuitem_width_cropped}
+        li:last-child{margin:0}
+        ul.sub-menu{ width:$menuitem_width_cropped * 2 + $margin_width;}
+    }
+
+}
+/*
+ _______  _______  _______  _______ 
+(       )(  ___  )(       )(  ___  )
+| () () || (   ) || () () || (   ) |
+| || || || (___) || || || || (___) |
+| |(_)| ||  ___  || |(_)| ||  ___  |
+| |   | || (   ) || |   | || (   ) |
+| )   ( || )   ( || )   ( || )   ( |
+|/     \||/     \||/     \||/     \|
+
+*/
+@media only screen and (min-width: $teenbreak) and (max-width: $mamabreak) {
+
+    $fullcontainer_width:$mamawidth;
+    $margin_width:($master_margin_width * ($mamawidth/$papawidth));    
+
+    .container                      { width: $fullcontainer_width; margin: 0 auto; padding: 0; overflow: hidden;}
+    .container .col                 { float: left; margin: 0 0 $margin_width $margin_width;}
+    .container .nomargin            { margin:0;}
+    .container .rowholder           { margin:0;}
+    .container .rowholder .col:first-child           { margin:0 !important;}
+
+   @for $i from 1 through $number_of_columns {
+    $colwidth: ($fullcontainer_width/$i)-($margin_width*(($i+1)/$i));
+    .col#{$i} { 
+        .col {width: $colwidth;
+            @for $i from 2 through $i {
+                &.span#{$i} {
+                    width: ($colwidth*$i)+($margin_width*($i - 1));
+                    }
+                }
+            }
+        }
+    }
+
+    .wp-caption {
+    width:  (($fullcontainer_width/$number_of_columns)-($margin_width)*1.5) !important;
+    }
+    $usablecolwidth: 
+    $fullcontainer_width - (($margin_width * $number_of_columns) + $margin_width) 
+    ;
+
+    $acolumnwidth:
+    $usablecolwidth/$number_of_columns
+    ;
+
+    $navcoltotalfull:
+    ($acolumnwidth * $width_of_nav_in_columns) + ($margin_width * ($width_of_nav_in_columns + 1))
+    ;
+    $navcoltotalcropped:
+    ($acolumnwidth * $width_of_nav_in_columns) + ($margin_width * ($width_of_nav_in_columns - 1))
+    ;
+
+    $menuitem_width_full:
+    ($navcoltotalfull - ($margin_width * ($number_of_nav_items - 1))) / $number_of_nav_items 
+    ;
+
+    $menuitem_width_cropped:
+    ($navcoltotalcropped - ($margin_width * ($number_of_nav_items - 1))) / $number_of_nav_items 
+    ;
+    .navarea {
+        ul.menu {
+            margin:0; 
+            width:$navcoltotalfull;
+            li {margin:0 $margin_width 0 0; width:$menuitem_width_full}
+            li:last-child{margin:0}
+            ul.sub-menu{ width:$menuitem_width_full * 2 + $margin_width;}
+        }
+    }
+    .navarea.cropped{
+        ul.menu {
+            margin:0; 
+            width:$navcoltotalcropped;
+            li {margin:0 $margin_width 0 0; width:$menuitem_width_cropped}
+            li:last-child{margin:0}
+            ul.sub-menu{ width:$menuitem_width_cropped * 2 + $margin_width;}
+        }
+
+    }
+
+}
+/* #Tablet (Portrait)
+_________ _______  _______  _       
+\__   __/(  ____ \(  ____ \( (    /|
+   ) (   | (    \/| (    \/|  \  ( |
+   | |   | (__    | (__    |   \ | |
+   | |   |  __)   |  __)   | (\ \) |
+   | |   | (      | (      | | \   |
+   | |   | (____/\| (____/\| )  \  |
+   )_(   (_______/(_______/|/    )_)
+ 
+*/
+@media only screen and (min-width:0) and (max-width: $teenbreak) {
+    $margin_width:5%;
+    .wp-caption {
+    width:  99% !important;
+    margin: 0 0 10px 0 ;
+    }
+    .container{
+        width: $teenwidth; 
+        margin: 0 auto; 
+        padding: 0; 
+        overflow: hidden; 
+    }
+    .container .col                 { float: left; margin: 0 0 $margin_width $margin_width;}
+    .container .nomargin            { margin:0;}
+    .container .rowholder           { margin:0;}
+    .container .rowholder .col,
+    .container .rowholder           { margin:0 !important; width:100% !important;}
+
+    @for $i from 1 through $number_of_columns {
+        .col#{$i} { 
+            .col {width: $teenwidth;
+                @for $i from 2 through $i {
+                    &.span#{$i} {
+                        width: $teenwidth;
+                    }
+                }
+            }
+        }
+    }
+        
+    .container .fullwidth           {width:  $teenwidth;}
+}

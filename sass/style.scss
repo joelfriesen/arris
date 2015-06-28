@@ -1,0 +1,113 @@
+/*!
+Theme Name: Arris
+Theme URI: http://joelf.com
+Author: Joel Friesen
+Author URI: http://joelf.com
+Description: Arris is a fully responsive theme, for the exclusive use of Arris Design
+Version: 1.07
+Text Domain: Arris
+Domain Path: /languages/
+Tags: orange, light, two-columns, left-sidebar, right-sidebar, fluid-layout, responsive-layout, custom-colors, custom-background, custom-menu, featured-images, sticky-post, theme-options, threaded-comments, translation-ready
+
+Arris is based on Solon Theme http://athemes.com/theme/solon*/
+
+$primary_color: #D9D4A6;
+$secondary_color: #3296B8;
+$tertiary_color: #B4AA50;
+
+$contentbgcolor: white;
+$darkcolor: #43a5f0;
+$lightcolor: #4c9cd2;
+$splashcolor: #f09843;
+$splashcolorbright: #81ffff;
+$body_link_color: #4c9cd2;
+$body_link_hover_color: $body_link_color * 1.3;
+$googlefont1: "Raleway", arial, serif;
+$googlefont2: "Muli", arial, serif;
+$number_of_columns: 4;
+$number_of_nav_items: 4;
+$width_of_nav_in_columns: 4;
+$nav_bg: #4c9cd2;
+$nav_color: white;
+$nav_hover_bg: lighten($lightcolor, 10%);
+$nav_hover_color: white;
+$nav_dropdown_color: #ddeeff;
+$mobilebg: #3b3b3b;
+$master_margin_width: 20px;
+
+//Fullscreen
+$papawidth: 960px;
+
+//tablets landscape
+$mamabreak: 975px;
+$mamawidth: 800px;
+
+//tablets portrait all the way down to the smallest phones.
+$teenbreak: 820px;
+$teenwidth: 90%;
+
+@import "base";
+@import "common";
+@import "wordpress";
+@import "rslides";
+@import "uniform";
+@import "nav";
+@import "fancybuttons";
+
+//layout, print and IE
+@import "layout";
+@import "print";
+@import "oldie";
+
+body {
+    font: 1em / 1.5em $googlefont2, Arial, sans-serif;
+}
+
+
+.accessible {display:none;}
+
+.headcontanier 
+{
+    width: 75%;
+    background: #ddd;
+    float: right;
+    display: block;
+    overflow: hidden;
+    
+}
+
+.site-header 
+{
+    display: block;
+    overflow: hidden;
+    width:100%;
+
+    .site-branding a,
+    .site-branding img,{
+        vertical-align: middle;
+    }
+}
+.leftnavbar
+{
+    background: #ddd;
+    float: left;
+    display: block;
+    overflow: hidden;
+    width: 25%;
+    margin: 66px 0 0 0;
+    height:24px
+}
+
+
+
+.menu {
+    margin: 66px 0 0 0;
+    height: 24px;
+    overflow: hidden;
+    }
+.navarea ul li a {
+  padding: 0 2em;
+}
+
+.site-branding, 
+.menubar {float:left;}

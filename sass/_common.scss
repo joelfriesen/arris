@@ -1,0 +1,89 @@
+/* REUSABLE AND COMMON STYLES */
+.imageleft, .alignleft {
+    float: left;
+    margin-right: 1em;
+}
+
+.imageright, .alignright {
+    float: right;
+    margin-left: 1em;
+}
+
+.nomargin {
+    margin: 0;
+}
+
+.invis {
+    display: none;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    visibility: hidden;
+    width: 0;
+}
+
+table.zebra {
+    background: #FFF none repeat scroll 0%;
+}
+
+table.zebra th {
+    background: #DDD none repeat scroll 0%;
+}
+
+table.zebra .altrow {
+    background: #EEE none repeat scroll 0%;
+}
+
+.twtr-timeline {
+    margin-top: .5em;
+}
+
+.twtr-widget {
+    margin: 0 0 20px 0;
+    clear: both;
+}
+
+.grey {
+    color: #888888;
+}
+
+.aligncenter {
+    margin: 0 auto;
+}
+
+.smalltext {
+    font-size: .8em;
+}
+
+.scalingimage {
+    width: 100%;
+    height: auto;
+}
+
+a[href$='.ppt'],
+a[href$='.xls'],
+a[href$='.doc'],
+a[href$='.docx'],
+a[href$='.pdf'],
+a[href~='mailto:'] {
+    margin-left: 0.2em;
+    font-size: 0.9em;
+    color: $splashcolor;
+        &:hover{
+        color: #000;
+    }
+}
+a[href$='.ppt']:after {
+    content: "- PPT";
+}
+a[href$='.xls']:after {
+    content: "- XLS";
+}
+a[href$='.doc']:after,
+a[href$='.docx']:after {
+    content: "- DOC";
+}
+
+a[href$='.pdf']:after {
+    content: "- \f15c    PDF";
+}

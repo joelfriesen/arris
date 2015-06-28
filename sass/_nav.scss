@@ -1,0 +1,267 @@
+/* BMP   Main navigation
+================================================== */
+
+  nav {}
+  .main-nav-check,
+  .mobile-nav ,
+  .toggle-menu {
+    display: none;
+  }
+  .navarea {    
+    ul { 
+      list-style: none;
+       margin: 0;
+      li {
+        float:left;
+        position: relative;
+      }
+      li a{ 
+        background:$nav_bg;
+        text-align:center; 
+        float:left; 
+        color:$nav_color; 
+        padding:0px; 
+        display:block; 
+        text-decoration:none; 
+        position: relative;
+        width:100%; 
+        padding:.5em 0;
+      }
+      li.current_page_item a,
+      li.current-menu-item a,
+      li.current-menu-parent a,
+      li a:hover,  
+      li a:focus{
+        color:$nav_hover_color; 
+        background:$nav_hover_bg;
+      } 
+      ul.sub-menu{ 
+        margin: 3.5em 0 0 0; 
+        position:absolute; 
+        z-index: 100;  
+        font-size: inherit; 
+        list-style: none;
+        li{ 
+          margin: 0; 
+          width:100%; 
+          background: rgba($nav_dropdown_color, 0.9)*.9;
+        } 
+        li:before{
+          background-color: none;
+          display: none;
+        }
+        li:hover:before{
+          background-color: none;
+          display: none;
+        }
+        li a{
+          background:none; 
+          color:$nav_color;
+        }
+        li.current_page_item > a,
+        li.current-menu-item > a,
+        li > a:hover, 
+        li > a:focus{
+          background:$nav_hover_bg; 
+          color:$nav_hover_color;
+        }
+        ul.sub-menu{ 
+          margin:  0 0 0 100%; 
+          width: 100%;  
+        }    
+      }    
+    }
+  }
+
+/* Mobile navigation
+================================================================================================ */
+@media only screen and (max-width: $teenbreak) {
+  nav .container {
+    width: 100%;
+  }
+  .main-nav,
+  .navarea {
+    display: none;
+  }
+  .mobile-nav{
+    display: block;
+    z-index: 100;
+    position: relative;
+    top: 0px;
+    width: 90%;
+    margin: 0 5%;
+    height:auto;
+    background: $mobilebg;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    ul.menu  {
+      margin:0; 
+      overflow:hidden; 
+      list-style: none;
+      li {
+        float:left; 
+        margin:0; 
+        width:100%; 
+        list-style: none;
+         a{
+          font-family: arial;
+          text-align:left; 
+          float:left;  
+          display:block; 
+          overflow:hidden; 
+          text-decoration:none; 
+          width:98%;
+          padding: 0 0 0 2%;
+          display: block;
+          font-size: inherit; 
+          color: #fff;
+          border: 1px solid darken($mobilebg, 5%);
+        }
+      }
+      li.menu-item-has-children > a{
+        width:73%;
+        float:left;
+      }
+      li.menu-item-has-children a.navdrop,
+      li.menu-item-has-children a.navdropover{
+        width: 25%;
+        text-indent: 0px;
+        float:right;
+        background:lighten($mobilebg, 10%);
+        text-align: center;
+        padding:0;
+        border: 0 solid $mobilebg;
+        span{display:none;}
+        &:after{ content: "+";}
+        &:before{content: "";}
+      }
+      li.menu-item-has-children a.navdropover{
+        &:after{ content: "-";}
+        &:before{content: "";}
+      }
+      li.menu-item-has-children li.menu-item-has-children a.navdrop,
+      li.menu-item-has-children li.menu-item-has-children a.navdropover{
+        background:lighten($mobilebg, 20%);
+        border: 0 solid lighten($mobilebg, 10%);
+        text-indent: 0px;
+        &:before{content: "";}
+      }
+      li.menu-item-has-children li.menu-item-has-children  li.menu-item-has-children a.navdrop,
+      li.menu-item-has-children li.menu-item-has-children  li.menu-item-has-children a.navdropover{
+        background:lighten($mobilebg, 30%);
+        border: 0 solid lighten($mobilebg, 20%);
+        text-indent: 0px;
+        &:before{content: "";}
+      }
+      ul.sub-menu{ 
+        margin:0; 
+        position: relative; 
+        z-index: 100;  
+        font-size: inherit; 
+        border:none; 
+        width:100%; 
+        list-style: none;    
+        li{ 
+          margin: 0; 
+          width: 100%; 
+          background:lighten($mobilebg, 10%);
+          a{
+          color:$nav_color;  
+          padding:0 0 0 5%;
+          width: 95%;
+          border: 0 solid lighten($mobilebg, 15%);
+          &:before{content: "";}
+          }
+        } 
+        ul.sub-menu{
+          margin:  0;
+          position: relative;
+          li {
+            background:lighten($mobilebg, 20%);
+            a{ 
+            border: 0 solid lighten($mobilebg, 25%);
+            text-indent: 20px;
+            &:before{content: "-- ";}
+            }
+          }
+          ul.sub-menu{ 
+            margin:  0; 
+            position: relative; 
+            li {
+              background:lighten($mobilebg, 30%);
+              a{ 
+              border: 0 solid lighten($mobilebg, 35%);
+              text-indent: 30px;
+              &:before{content: "--- ";}
+              }
+            }
+          }
+        }  
+      }
+    }
+  }
+  /* Mobile topbar
+  ======================= */
+  .topbar {
+    margin-top:30px;
+    }
+  .toggle-menu { 
+    font-size: 1.5em;
+    cursor: pointer;
+    display:block;
+    background: #eee;
+    overflow: hidden;
+    padding: 5% 5%; 
+    top: 0;
+    z-index:1000;
+    box-shadow: 0px 6px 19px rgba(0,0,0,0.2);
+    &:before {
+      margin-right: .3333em;
+      content: "";
+      transition: all 0.3s ease;
+    }
+  }
+  .main-nav-check {
+    display: none;
+  }
+  .close-menu {
+    display: none;
+  }
+
+  /* Mobile navigation Animations
+  ================================== */
+
+  #main-nav-check:checked ~ .toggle-menu:before {
+    content: "";
+  }
+  #main-nav-check ~ .mobile-nav ul.menu li a,
+  #main-nav-check:checked ~ .mobile-nav ul.menu ul.subhide li a,
+  #main-nav-check:checked ~ .mobile-nav ul.menu ul.subshow ul.subhide li a,
+  #main-nav-check:checked ~ .mobile-nav ul.menu ul.subhide ul.subshow li a,
+  #main-nav-check:checked ~ .mobile-nav ul.menu ul.subhide li a.navdrop,
+  #main-nav-check:checked ~ .mobile-nav ul.menu ul.subhide li a.navdropover,
+  #main-nav-check:checked ~ .mobile-nav ul.menu ul.subshow ul.subhide li a.navdrop,
+  #main-nav-check:checked ~ .mobile-nav ul.menu ul.subshow ul.subhide li a.navdropover, 
+  #main-nav-check:checked ~ .mobile-nav ul.menu ul.subhide ul.subshow li a.navdrop,
+  #main-nav-check:checked ~ .mobile-nav ul.menu ul.subhide ul.subshow li a.navdropover 
+  {
+    border-width:0;
+    line-height:0;
+    transition: all 0.2s ease;
+  }
+  #main-nav-check:checked ~ .mobile-nav ul.menu li a.navdrop,
+  #main-nav-check:checked ~ .mobile-nav ul.menu li a.navdropover,
+  #main-nav-check:checked ~ .mobile-nav ul.menu ul.subshow li a.navdrop,
+  #main-nav-check:checked ~ .mobile-nav ul.menu ul.subshow li a.navdropover{
+    border-width:1.25em 0 0 0;
+    line-height: 2.75em;
+    transition: all 0.2s ease;
+    border-bottom:1px solid transparent;
+  }
+  #main-nav-check:checked ~ .mobile-nav ul.menu li a,
+  #main-nav-check:checked ~ .mobile-nav ul.menu ul.subshow li a {
+    line-height: 4em;
+    border-width:0 0 1px 0;
+    transition: all 0.2s ease;
+  }
+}
