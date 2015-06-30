@@ -11,10 +11,15 @@
  */
 
 get_header(); ?>
+<?php get_sidebar(); ?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
-
+			<?php if (has_post_thumbnail()) :
+              the_post_thumbnail(
+                array(478,308),
+                array('class' => 'mainimage'));  ?>
+          <?php endif; ?>
 			<?php while ( have_posts() ) : the_post(); ?>
 
 				<?php get_template_part( 'content', 'page' ); ?>
@@ -31,5 +36,4 @@ get_header(); ?>
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>

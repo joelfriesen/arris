@@ -138,25 +138,7 @@ $menuitem_width_full:
 $menuitem_width_cropped:
 ($navcoltotalcropped - ($margin_width * ($number_of_nav_items - 1))) / $number_of_nav_items 
 ;
-.navarea {
-    ul.menu {
-        margin:0; 
-        width:$navcoltotalfull;
-        li {margin:0 $margin_width 0 0; width:$menuitem_width_full}
-        li:last-child{margin:0}
-        ul.sub-menu{ width:$menuitem_width_full * 2 + $margin_width;}
-    }
-}
-.navarea.cropped{
-    ul.menu {
-        margin:0; 
-        width:$navcoltotalcropped;
-        li {margin:0 $margin_width 0 0; width:$menuitem_width_cropped}
-        li:last-child{margin:0}
-        ul.sub-menu{ width:$menuitem_width_cropped * 2 + $margin_width;}
-    }
 
-}
 /*
  _______  _______  _______  _______ 
 (       )(  ___  )(       )(  ___  )
@@ -217,25 +199,7 @@ $menuitem_width_cropped:
     $menuitem_width_cropped:
     ($navcoltotalcropped - ($margin_width * ($number_of_nav_items - 1))) / $number_of_nav_items 
     ;
-    .navarea {
-        ul.menu {
-            margin:0; 
-            width:$navcoltotalfull;
-            li {margin:0 $margin_width 0 0; width:$menuitem_width_full}
-            li:last-child{margin:0}
-            ul.sub-menu{ width:$menuitem_width_full * 2 + $margin_width;}
-        }
-    }
-    .navarea.cropped{
-        ul.menu {
-            margin:0; 
-            width:$navcoltotalcropped;
-            li {margin:0 $margin_width 0 0; width:$menuitem_width_cropped}
-            li:last-child{margin:0}
-            ul.sub-menu{ width:$menuitem_width_cropped * 2 + $margin_width;}
-        }
-
-    }
+    
 
 }
 /* #Tablet (Portrait)

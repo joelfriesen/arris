@@ -79,59 +79,8 @@ function arrisdesign_customize_register( $wp_customize ) {
             )
         )
     );
-	$wp_customize->add_setting(
-		'arrisdesign_scroller',
-		array(
-			'sanitize_callback' => 'arrisdesign_sanitize_checkbox',
-			'default' => 0,			
-		)		
-	);
-	$wp_customize->add_control(
-		'arrisdesign_scroller',
-		array(
-			'type' => 'checkbox',
-			'label' => __('Check this box if you want to disable the custom scroller.', 'arrisdesign'),
-			'section' => 'arrisdesign_general',
-            'priority' => 9,			
-		)
-	);    
-	//Layout
-	$wp_customize->add_setting(
-		'arrisdesign_layout',
-		array(
-			'default' => 'content-sidebar',
-		)
-	);
-	 
-	$wp_customize->add_control(
-		'arrisdesign_layout',
-		array(
-			'type' => 'radio',
-			'label' => __('Layout', 'arrisdesign'),
-			'section' => 'arrisdesign_general',
-			'choices' => array(
-				'content-sidebar' => 'Content-Sidebar',
-				'sidebar-content' => 'Sidebar-Content',
-			),
-		)
-	);
-	//Full content posts
-	$wp_customize->add_setting(
-		'arrisdesign_full_content',
-		array(
-			'sanitize_callback' => 'arrisdesign_sanitize_checkbox',
-			'default' => 0,			
-		)		
-	);
-	$wp_customize->add_control(
-		'arrisdesign_full_content',
-		array(
-			'type' => 'checkbox',
-			'label' => __('Check this box to display the full content of the posts on the home page.', 'arrisdesign'),
-			'section' => 'arrisdesign_general',
-            'priority' => 11,			
-		)
-	);	
+	
+	
 	//___Fonts___//
     $wp_customize->add_section(
         'arrisdesign_typography',
@@ -197,153 +146,15 @@ function arrisdesign_customize_register( $wp_customize ) {
 			'choices' => $font_choices
 		)
 	);
-	//___Slider___//
-    $wp_customize->add_section(
-        'arrisdesign_slider',
-        array(
-            'title' => __('Slider', 'arrisdesign'),
-            'priority' => 12,
-        )
-    );
-	//Display
-	$wp_customize->add_setting(
-		'slider_display',
-		array(
-			'sanitize_callback' => 'arrisdesign_sanitize_checkbox',
-		)		
-	);
-	$wp_customize->add_control(
-		'slider_display',
-		array(
-			'type' => 'checkbox',
-			'label' => __('Check this box to display the slider.', 'arrisdesign'),
-			'section' => 'arrisdesign_slider',
-		)
-	);
+
 	
-	//Category
-	$wp_customize->add_setting( 'slider_cat', array(
-		'default'        => '',
-		'sanitize_callback' => 'arrisdesign_sanitize_int',
-	) );
-	
-	$wp_customize->add_control( new Categories_Dropdown( $wp_customize, 'slider_cat', array(
-		'label'   => __('Select which category to show in the slider', 'arrisdesign'),
-		'section' => 'arrisdesign_slider',
-		'settings'   => 'slider_cat',
-	) ) );
-	
-	//Number of posts
-	$wp_customize->add_setting(
-		'slider_number',
-		array(
-			'default' => '6',
-			'sanitize_callback' => 'arrisdesign_sanitize_int',
-		)
-	);
-		
-	$wp_customize->add_control(
-		'slider_number',
-		array(
-			'label' => __('Enter the number of posts you want to show in the slider.', 'arrisdesign'),
-			'section' => 'arrisdesign_slider',
-			'type' => 'text',
-		)
-	);
-	//Slideshow speed
-	$wp_customize->add_setting(
-		'slideshowspeed',
-		array(
-			'default' => '4000',
-			'sanitize_callback' => 'arrisdesign_sanitize_int',
-		)
-	);
-		
-	$wp_customize->add_control(
-		'slideshowspeed',
-		array(
-			'label' => __('Enter your desired slideshow speed, in miliseconds.', 'arrisdesign'),
-			'section' => 'arrisdesign_slider',
-			'type' => 'text',
-		)
-	);
-	//Animation speed
-	$wp_customize->add_setting(
-		'animationspeed',
-		array(
-			'default' => '400',
-			'sanitize_callback' => 'arrisdesign_sanitize_int',
-		)
-	);
-		
-	$wp_customize->add_control(
-		'animationspeed',
-		array(
-			'label' => __('Enter your desired animation speed, in miliseconds.', 'arrisdesign'),
-			'section' => 'arrisdesign_slider',
-			'type' => 'text',
-		)
-	);	
-	
-	//___Single posts___//
-    $wp_customize->add_section(
-        'arrisdesign_singles',
-        array(
-            'title' => __('Single posts/pages', 'arrisdesign'),
-            'priority' => 13,
-        )
-    );
-	//Single posts
-	$wp_customize->add_setting(
-		'arrisdesign_post_img',
-		array(
-			'sanitize_callback' => 'arrisdesign_sanitize_checkbox',
-		)		
-	);
-	$wp_customize->add_control(
-		'arrisdesign_post_img',
-		array(
-			'type' => 'checkbox',
-			'label' => __('Check this box to show featured images on single posts', 'arrisdesign'),
-			'section' => 'arrisdesign_singles',
-		)
-	);
-	//Pages
-	$wp_customize->add_setting(
-		'arrisdesign_page_img',
-		array(
-			'sanitize_callback' => 'arrisdesign_sanitize_checkbox',
-		)
-	);
-	$wp_customize->add_control(
-		'arrisdesign_page_img',
-		array(
-			'type' => 'checkbox',
-			'label' => __('Check this box to show featured images on pages', 'arrisdesign'),
-			'section' => 'arrisdesign_singles',
-		)
-	);
-	//Author bio
-	$wp_customize->add_setting(
-		'author_bio',
-		array(
-			'sanitize_callback' => 'arrisdesign_sanitize_checkbox',
-		)		
-	);
-	$wp_customize->add_control(
-		'author_bio',
-		array(
-			'type' => 'checkbox',
-			'label' => __('Check this box to display the author bio on single posts. You can add your author bio and social links on the Users screen in the Your Profile section.', 'arrisdesign'),
-			'section' => 'arrisdesign_singles',
-		)
-	);
+
 	//___Colors___//
 	//Primary color
 	$wp_customize->add_setting(
 		'primary_color',
 		array(
-			'default'			=> '#e86f67',
+			'default'			=> '#D9D4A6',
 			'sanitize_callback' => 'sanitize_hex_color',
 			'transport'			=> 'postMessage'
 		)
@@ -364,7 +175,7 @@ function arrisdesign_customize_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		'secondary_color',
 		array(
-			'default'			=> '#2A363B',
+			'default'			=> '#3296B8',
 			'sanitize_callback' => 'sanitize_hex_color',
 			'transport'			=> 'postMessage'
 		)
@@ -381,11 +192,11 @@ function arrisdesign_customize_register( $wp_customize ) {
 			)
 		)
 	);
-	//Site title
+	//tertiary color
 	$wp_customize->add_setting(
-		'site_title_color',
+		'tertiary_color',
 		array(
-			'default'			=> '#2A363B',
+			'default'			=> '#B4AA51',
 			'sanitize_callback' => 'sanitize_hex_color',
 			'transport'			=> 'postMessage'
 		)
@@ -393,78 +204,15 @@ function arrisdesign_customize_register( $wp_customize ) {
 	$wp_customize->add_control(
 		new WP_Customize_Color_Control(
 			$wp_customize,
-			'site_title_color',
+			'tertiary_color',
 			array(
-				'label' => __('Site title', 'arrisdesign'),
+				'label' => __('tertiary color', 'arrisdesign'),
 				'section' => 'colors',
-				'settings' => 'site_title_color',
+				'settings' => 'tertiary_color',
 				'priority' => 12
 			)
 		)
 	);
-	//Site description
-	$wp_customize->add_setting(
-		'site_desc_color',
-		array(
-			'default'			=> '#fff',
-			'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'site_desc_color',
-			array(
-				'label' => __('Site description', 'arrisdesign'),
-				'section' => 'colors',
-				'settings' => 'site_desc_color',
-				'priority' => 12
-			)
-		)
-	);
-	//Entry title
-	$wp_customize->add_setting(
-		'entry_title_color',
-		array(
-			'default'			=> '#2A363B',
-			'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'entry_title_color',
-			array(
-				'label' => __('Entry title', 'arrisdesign'),
-				'section' => 'colors',
-				'settings' => 'entry_title_color',
-				'priority' => 12
-			)
-		)
-	);	
-	//Body
-	$wp_customize->add_setting(
-		'body_text_color',
-		array(
-			'default'			=> '#7B848F',
-			'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'body_text_color',
-			array(
-				'label' => __('Text', 'arrisdesign'),
-				'section' => 'colors',
-				'settings' => 'body_text_color',
-				'priority' => 12
-			)
-		)
-	);	
 }
 add_action( 'customize_register', 'arrisdesign_customize_register' );
 

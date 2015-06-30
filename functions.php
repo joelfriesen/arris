@@ -39,14 +39,14 @@ function arrisdesign_setup() {
 	 * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
 	 */
 	add_theme_support( 'post-thumbnails' );
-	add_image_size( 'arrisdesign-home', 700, 400, true );
+	add_image_size( 'arrisdesign-home', 478, 308, true );
 	add_image_size( 'slider-image', 700, 500, true );
 	add_image_size( 'single-thumb', 700 );
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
-		'primary' => __( 'Primary Menu', 'arrisdesign' ),
-		'social' => __( 'Social', 'arrisdesign' ),
+		'primary-menu' => __( 'Primary Menu', 'arrisdesign' ),
+		'secondary-menu' => __( 'Mobile menu', 'arrisdesign' ),
 	) );
 
 	// Enable support for Post Formats.
@@ -85,25 +85,10 @@ function arrisdesign_widgets_init() {
 		'before_title'  => '<h3 class="widget-title">',
 		'after_title'   => '</h3>',
 	) );
+	
 	register_sidebar( array(
-		'name'          => __( 'Footer A', 'arrisdesign' ),
-		'id'            => 'sidebar-3',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
-		'before_title'  => '<h3 class="widget-title">',
-		'after_title'   => '</h3>',
-	) );	
-	register_sidebar( array(
-		'name'          => __( 'Footer B', 'arrisdesign' ),
-		'id'            => 'sidebar-4',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
-		'before_title'  => '<h3 class="widget-title">',
-		'after_title'   => '</h3>',
-	) );	
-	register_sidebar( array(
-		'name'          => __( 'Footer C', 'arrisdesign' ),
-		'id'            => 'sidebar-5',
+		'name'          => __( 'Footer', 'arrisdesign' ),
+		'id'            => 'footer',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h3 class="widget-title">',
@@ -131,7 +116,7 @@ function arrisdesign_scripts() {
 	
 	wp_enqueue_style( 'arrisdesign-bootstrap', get_template_directory_uri() . '/bootstrap/css/bootstrap.min.css', array(), true );
 	
-	wp_enqueue_style( 'arrisdesign-style', get_stylesheet_uri(), '', '3e56t54r' );
+	wp_enqueue_style( 'arrisdesign-style', get_stylesheet_uri(), '', '23ssw4seessss' );
 	
 	$headings_font = esc_html(get_theme_mod('headings_fonts'));
 	$body_font = esc_html(get_theme_mod('body_fonts'));

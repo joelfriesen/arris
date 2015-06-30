@@ -21,12 +21,12 @@
 </head>
 
 <body <?php body_class(); ?>>
-<a class="accessible" href="#main">[Skip to Content]</a>
-  <input type="checkbox" class="main-nav-check" id="main-nav-check" /> 
-  <label for="main-nav-check" class="toggle-menu">Navigation</label>
-  <nav class="menubar mobile-nav" id="mobile-nav">
-    <?php wp_nav_menu(array( 'theme_location' => 'secondary-menu', 'container_class' => 'container' ) );?>
-  </nav>
+<a class="accessible skip-link screen-reader-text" href="#main">[Skip to Content]</a>
+<input type="checkbox" class="main-nav-check" id="main-nav-check" /> 
+<label for="main-nav-check" class="toggle-menu">Navigation</label>
+<nav class="menubar mobile-nav" id="mobile-nav">
+<?php wp_nav_menu(array( 'theme_location' => 'secondary-menu', 'container_class' => 'container' ) );?>
+</nav>
 
 <div class="site-header">
 	<div class="leftnavbar"></div>
@@ -45,30 +45,6 @@
 		    </div>
 		</nav>
 	</div>	
-
 </div>
 
-
-
-<!-- <div id="page" class="hfeed site">
-	<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'arrisdesign' ); ?></a>
-
-	<?php if ( has_nav_menu( 'social' ) ) : ?>
-		<nav class="social-navigation clearfix">
-			<?php wp_nav_menu( array( 'theme_location' => 'social', 'link_before' => '<span class="screen-reader-text">', 'link_after' => '</span>', 'container_class' => 'container', 'menu_class' => 'menu clearfix', 'fallback_cb' => false ) ); ?>
-		</nav>
-	<?php endif; ?>	
-	
-	<header id="masthead" class="site-header" role="banner">
-		<div class="container">
-			
-		</div>
-	</header>
-	<nav id="site-navigation" class="main-navigation" role="navigation">
-		<div class="container">
-			<button class="menu-toggle btn"><i class="fa fa-bars"></i></button>
-			<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
-		</div>	
-	</nav>
- -->
-	<div id="content" class="site-content container">
+<div id="content" class="site-content container">
