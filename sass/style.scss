@@ -14,23 +14,21 @@ Arris is based on Solon Theme http://athemes.com/theme/solon*/
 $primary_color: #D9D4A6;
 $secondary_color: #3296B8;
 $tertiary_color: #B4AA50;
-
 $contentbgcolor: white;
 $darkcolor: $primary_color;
 $lightcolor: $secondary_color;
 $splashcolor:$tertiary_color;
 $splashcolorbright: #81ffff;
-
 $body_link_color: #3296B8;
 $body_link_hover_color: $body_link_color * 1.3;
-$googlefont1: "Raleway", arial, serif;
-$googlefont2: "Muli", arial, serif;
+$googlefont1: "Raleway",arial,serif;
+$googlefont2: "Muli",arial,serif;
 $number_of_columns: 4;
 $number_of_nav_items: 4;
 $width_of_nav_in_columns: 4;
-$nav_bg: #4c9cd2;
+$nav_bg: none;
 $nav_color: white;
-$nav_hover_bg: lighten($lightcolor, 10%);
+$nav_hover_bg: rgba(255, 255, 255, .2);
 $nav_hover_color: white;
 $nav_dropdown_color: #ddeeff;
 $mobilebg: #3b3b3b;
@@ -40,12 +38,13 @@ $master_margin_width: 20px;
 $papawidth: 960px;
 
 //tablets landscape
-$mamabreak: 975px;
+$mamabreak: 980px;
 $mamawidth: 800px;
 
 //tablets portrait all the way down to the smallest phones.
-$teenbreak: 820px;
+$teenbreak: 835px;
 $teenwidth: 90%;
+
 
 @import "base";
 @import "common";
@@ -54,105 +53,8 @@ $teenwidth: 90%;
 @import "uniform";
 @import "nav";
 @import "fancybuttons";
-
 //layout, print and IE
 @import "layout";
 @import "print";
 @import "oldie";
 
-body {
-    font: 1em / 1.5em $googlefont2, Arial, sans-serif;
-}
-
-
-.accessible {display:none;}
-
-.headcontanier 
-{
-    width: 91%;
-    background: #ddd;
-    float: right;
-    display: block;
-    overflow: hidden;
-    
-}
-
-.site-header 
-{
-    display: block;
-    overflow: hidden;
-    width:100%;
-
-    .site-branding a,
-    .site-branding img,{
-        vertical-align: middle;
-    }
-}
-.leftnavbar
-{
-    background: #ddd;
-    float: left;
-    display: block;
-    overflow: hidden;
-    width: 9%;
-    margin: 66px 0 0 0;
-    height:24px
-}
-.leftfootbar{
-  width: 9%;
-  float:left;
-  height: 24px;
-}
-.footcontanier{
-  width:748px;
-  text-align:right;
-  float:left;
-}
-
-.menu {
-    margin: 66px 0 0 0;
-    height: 24px;
-    overflow: hidden;
-    }
-.navarea ul li a {
-  padding: 0 2em;
-}
-
-.site-branding, 
-.menubar {float:left;}
-
-.container {
-  width: 91%;
-  margin: 0 auto;
-  padding: 0;
-  overflow: hidden;
-float:right;
-  background-color: #D9D4A6;
-  margin:20px 0;
-background-image: url(images/a.png);
-  background-repeat: no-repeat;
-  background-position: 137px bottom;}
-
-  #primary{
-    float: left;
-    width: 524px;
-      background-color: #fff;
-}
-  #secondary {
-    width:224px; 
-}
-
-#text-2, .footcontanier {
-
-  overflow:hidden;
-  padding: 1.2em;
-  h3,
-  .textwidget {color:#fff;}
-  }
-#text-2{border:1px solid #fff;  
-  border-width:0 1px 1px 0;
-  min-height:309px;}
-
-  .comments-area,#main article {padding:0 2em;}
-
-  #colophon{overflow:hidden;  clear: both;}

@@ -38,6 +38,7 @@ col div.
 e.g.  <div class="col spanthree">...</div>
 */
 
+
 /*
  _______  _______  _______  _______ 
 (  ____ )(  ___  )(  ____ )(  ___  )
@@ -49,11 +50,11 @@ e.g.  <div class="col spanthree">...</div>
 |/       |/     \||/       |/     \|
  
 */
- 
+
 $margin_width:$master_margin_width;
 $fullcontainer_width:$papawidth;
 
-    .container                      { width: $fullcontainer_width; margin: 0 auto; padding: 0; overflow: hidden;}
+    // .container                      { width: $fullcontainer_width; margin: 0 auto; padding: 0; overflow: hidden;}
     .container .col                 { float: left; margin: 0 0 0 $margin_width; }
     .container .nomargin            { margin:0;}
     .container .rowholder           { margin:0;}
@@ -71,50 +72,167 @@ $fullcontainer_width:$papawidth;
         }
     }
 }
+
+body {
+    font: 1em / 1.5em $googlefont2, Arial, sans-serif;
+}
+
+.accessible {
+    display: none;
+}
+
+.headcontanier {
+    width: 91%;
+    background: #ddd;
+    float: right;
+    display: block;
+    overflow: hidden;
+}
+
+.site-header {
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    .site-branding a, .site-branding img, {
+        vertical-align: middle;
+    }
+}
+
+.leftnavbar {
+    background: #ddd;
+    float: left;
+    display: block;
+    overflow: hidden;
+    width: 9%;
+    margin: 66px 0 0 0;
+    height: 24px
+}
+
+.leftfootbar {
+    width: 9%;
+    float: left;
+    height: 24px;
+}
+
+.footcontanier {
+    width: 848px;
+    text-align: right;
+    float: left;
+}
+
+
+
+
+.site-branding,
+.menubar {
+    float: left;
+}
+.menu {
+    margin: 66px 0 0 0;
+    height: 24px;
+    overflow: hidden;
+}
+#content  {
+    width: 91%;
+    margin: 0 auto;
+    padding: 0;
+    overflow: hidden;
+    float: right;
+    background-color: #D9D4A6;
+    margin: 20px 0;
+    background-image: url(images/a.png);
+    background-repeat: no-repeat;
+    background-position: 137px bottom;
+}
+
+#primary {
+    float: left;
+    width: 643px;
+    background-color: #fff;
+}
+
+#secondary {
+    width: 224px;
+}
+
+#text-2,
+.footcontanier {
+    overflow: hidden;
+    padding: 1.2em;
+    h3, .textwidget {
+        color: #DBDAA4;
+        line-height: 3em;
+    }
+}
+#text-2 h3 {    
+    font-size: 1.8em;
+    line-height: 1em;
+}
+#text-2 {
+    border: 1px solid #fff;
+    border-width: 0 1px 1px 0;
+}
+.page #text-2 {
+    border: 1px solid #fff;
+    border-width: 0 1px 1px 0;
+}
+.page #text-2 h3 {    
+  font-size: 1.8em;
+  line-height: 1em;
+  padding: 5.2em 0 0 0;
+  text-align: right;
+}
+.home #text-2 h3 {    
+  font-size: 1.8em;
+  line-height: 1em;
+  padding: inherit;
+  text-align: left;
+  padding:0;
+}
+.post_thumb {
+    background-color:#025269;}
+
+.page .post_thumb {
+    height: 212px;
+      margin: 0 0 20px 0;
+}
+.home .post_thumb {
+    height: 308px;
+      margin: 0 0 20px 0;
+}
+.mainimage{
+  border: 1px solid #fff;
+  border-width: 0 1px 0 0;
+}
+
+div.home #text-2 {
+    height: 289px;
+}
+
+.page #text-2 {
+   height: 193px;
+   padding:1.2em 0 0 1.2em;
+}
+
+.comments-area,
+#main article {
+    padding: 0 2em;
+}
+
+#colophon {
+    overflow: hidden;
+    clear: both;
+}
+
 .wp-caption {
     width:  (($fullcontainer_width/$number_of_columns)-($margin_width)*1.5) !important;
 }
+#content  {
+    width: 91%;}
 
-/* Incedentals
-================================================== */
-/* 
-For full bleed navigation. Place the nav outside of a col
-For cropped nav, place inside a col.
-
-If the nav needs to be in a spot that uses 4 of 5 columns you would build it out like this:
-
-
-<div class="fivecol">
-    <div class="col">
-        Logo or whatever
-    </div>
-    <nav class="menubar main-nav" id="main-nav">
-      <div class="container  navarea">
-        <?php wp_nav_menu( array( 'theme_location' => 'primary-menu' ) ); ?>
-      </div>
-    </nav>
-</div>
-
-This would butt the nav right up to the edge of the content in the previous column 
-For an example: look at bmp.saanich.ca
-
-<div class="fivecol">
-    <div class="col">
-        Logo or whatever
-    </div>
-    <div class="col spanfour">
-        <nav class="menubar main-nav" id="main-nav">
-          <div class="container navarea cropped">
-            <?php wp_nav_menu( array( 'theme_location' => 'primary-menu' ) ); ?>
-          </div>
-        </nav>
-    </div>
-</div>
-
-This example wouldplace the navigation inside a column, and give it the margin width on either side.
-*/
-
-
+.navarea ul li a {
+    padding: 0 2em;
+}
 
 $usablecolwidth: 
 $fullcontainer_width - (($margin_width * $number_of_columns) + $margin_width) 
@@ -155,7 +273,7 @@ $menuitem_width_cropped:
     $fullcontainer_width:$mamawidth;
     $margin_width:($master_margin_width * ($mamawidth/$papawidth));    
 
-    .container                      { width: $fullcontainer_width; margin: 0 auto; padding: 0; overflow: hidden;}
+    .container                      { width: $fullcontainer_width; }
     .container .col                 { float: left; margin: 0 0 $margin_width $margin_width;}
     .container .nomargin            { margin:0;}
     .container .rowholder           { margin:0;}
@@ -199,9 +317,20 @@ $menuitem_width_cropped:
     $menuitem_width_cropped:
     ($navcoltotalcropped - ($margin_width * ($number_of_nav_items - 1))) / $number_of_nav_items 
     ;
-    
-
+    #primary {
+  width: 520px;}
+.navarea ul li a {
+    padding: 0 1.3em;
 }
+#content  {
+    width: 91%;}
+
+.footcontanier {
+  width: 808px;}
+   .leftfootbar {
+  width: 0;}
+}
+
 /* #Tablet (Portrait)
 _________ _______  _______  _       
 \__   __/(  ____ \(  ____ \( (    /|
@@ -244,4 +373,48 @@ _________ _______  _______  _
     }
         
     .container .fullwidth           {width:  $teenwidth;}
+    #secondary {
+  display: none;}
+  .menu {
+    margin: inherit;
+    height: auto;
+    overflow: hidden;
+}
+#content {
+    width: $teenwidth; 
+    margin: 20px auto;
+    padding: 0;
+    overflow: hidden;
+    float: none;
+    background-color: inherit;
+    background-image: none;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+}
+#primary {
+  float: left;
+  width: 100%;
+  background-color: #fff;
+}
+.mainimage {
+  height: auto;
+  width: 100%;
+}
+.comments-area, #main article {
+  padding: 0;
+}
+
+.headcontanier {
+  width: 95%;}
+
+.leftnavbar {
+  width: 5%;}
+
+.footcontanier {
+  width: 95%;
+  padding:0;}
+
+  .leftfootbar {
+  width: 0;}
+
 }

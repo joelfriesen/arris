@@ -52,11 +52,6 @@ function arrisdesign_setup() {
 	// Enable support for Post Formats.
 	add_theme_support( 'post-formats', array( 'aside', 'image', 'video', 'quote', 'link' ) );
 
-	// Setup the WordPress core custom background feature.
-	add_theme_support( 'custom-background', apply_filters( 'arrisdesign_custom_background_args', array(
-		'default-color' => 'f2f2f2',
-		'default-image' => '',
-	) ) );
 
 	// Enable support for HTML5 markup.
 	add_theme_support( 'html5', array(
@@ -77,6 +72,15 @@ add_action( 'after_setup_theme', 'arrisdesign_setup' );
  */
 function arrisdesign_widgets_init() {
 	register_sidebar( array(
+		'name'          => __( 'Page Sidebar', 'arrisdesign' ),
+		'id'            => 'page',
+		'description'   => '',
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</aside>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
+	) );
+	register_sidebar( array(
 		'name'          => __( 'Sidebar', 'arrisdesign' ),
 		'id'            => 'sidebar-1',
 		'description'   => '',
@@ -85,7 +89,6 @@ function arrisdesign_widgets_init() {
 		'before_title'  => '<h3 class="widget-title">',
 		'after_title'   => '</h3>',
 	) );
-	
 	register_sidebar( array(
 		'name'          => __( 'Footer', 'arrisdesign' ),
 		'id'            => 'footer',
@@ -114,9 +117,7 @@ require get_template_directory() . "/widgets/video-widget.php";
  */
 function arrisdesign_scripts() {
 	
-	wp_enqueue_style( 'arrisdesign-bootstrap', get_template_directory_uri() . '/bootstrap/css/bootstrap.min.css', array(), true );
-	
-	wp_enqueue_style( 'arrisdesign-style', get_stylesheet_uri(), '', '23ssw4seessss' );
+	wp_enqueue_style( 'arrisdesign-style', get_stylesheet_uri(), '', '2.34esesds4' );
 	
 	$headings_font = esc_html(get_theme_mod('headings_fonts'));
 	$body_font = esc_html(get_theme_mod('body_fonts'));
@@ -131,23 +132,7 @@ function arrisdesign_scripts() {
 		wp_enqueue_style( 'arrisdesign-body-fonts', '//fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700');
 	}
 	
-	wp_enqueue_style( 'arrisdesign-font-awesome', get_template_directory_uri() . '/fonts/font-awesome.min.css' );
-	
-	wp_enqueue_script( 'arrisdesign-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
 
-	wp_enqueue_script( 'arrisdesign-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
-	
-	wp_enqueue_script( 'arrisdesign-scripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), true );
-	
-	wp_enqueue_script( 'arrisdesign-fitvids', get_template_directory_uri() . '/js/jquery.fitvids.js', array('jquery'), true );
-
-	if ( get_theme_mod('arrisdesign_scroller') != 1 )  {
-		
-		wp_enqueue_script( 'arrisdesign-nicescroll', get_template_directory_uri() . '/js/jquery.nicescroll.min.js', array('jquery'), true );
-
-		wp_enqueue_script( 'arrisdesign-nicescroll-init', get_template_directory_uri() . '/js/nicescroll-init.js', array('jquery'), true );
-
-	}
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -158,29 +143,7 @@ function arrisdesign_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'arrisdesign_scripts' );
 
-/**
- * Adds more contact methods in the User profile screen (links used for the author bio).
- */
-function arrisdesign_contactmethods( $contactmethods ) {
-	
-	$contactmethods['arrisdesign_facebook'] = __( 'Author Bio: Facebook', 'arrisdesign' );
-	$contactmethods['arrisdesign_twitter'] = __( 'Author Bio: Twitter', 'arrisdesign' );	
-	$contactmethods['arrisdesign_googleplus'] = __( 'Author Bio: Google Plus', 'arrisdesign' );
-	$contactmethods['arrisdesign_linkedin'] = __( 'Author Bio: Linkedin', 'arrisdesign' );
-	
-	return $contactmethods;
-}
-add_filter( 'user_contactmethods', 'arrisdesign_contactmethods', 10, 1);
 
-/**
- * Display password form on excerpts
- */
-function arrisdesign_password_form( $form ) {
-	if ( post_password_required() )
-		$form = get_the_password_form();
-	return $form;
-}
-add_filter( 'the_excerpt', 'arrisdesign_password_form' );
 /**
  * Load html5shiv
  */

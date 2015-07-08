@@ -5,8 +5,8 @@
  * @package arrisdesign
  */
 ?>
-	<div id="secondary" class="widget-area home" role="complementary">
-		<?php if ( ! dynamic_sidebar( 'sidebar-1' ) ) : ?>
+	<div id="secondary" class="widget-area" role="complementary">
+		<?php if ( ! dynamic_sidebar( 'sidebar-page' ) ) : ?>
 
 			<aside id="search" class="widget widget_search">
 				<?php get_search_form(); ?>
